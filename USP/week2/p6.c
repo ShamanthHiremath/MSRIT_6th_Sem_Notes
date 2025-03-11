@@ -4,7 +4,7 @@
 #include <unistd.h>
 #include <errno.h>
 
-#define BUFFER_SIZE 1024  // Max read size
+#define BUFFER_SIZE 1024  
 
 int main(int argc, char *argv[]) {
     if (argc != 3) {
@@ -20,14 +20,12 @@ int main(int argc, char *argv[]) {
         exit(EXIT_FAILURE);
     }
 
-    // Open file for reading and writing
     int fd = open(filename, O_RDWR);
     if (fd == -1) {
         perror("Error opening file");
         exit(EXIT_FAILURE);
     }
 
-    // Read 'n' characters from file
     char buffer[BUFFER_SIZE];
     ssize_t bytesRead = read(fd, buffer, n);
     if (bytesRead == -1) {
@@ -36,37 +34,40 @@ int main(int argc, char *argv[]) {
         exit(EXIT_FAILURE);
     }
 
-    buffer[bytesRead] = '\0'; // Null-terminate for safety
+    buffer[bytesRead] = '\0';
 
-    // Move offset to end of file for appending
     if (lseek(fd, 0, SEEK_END) == -1) {
         perror("Error seeking to end of file");
         close(fd);
         exit(EXIT_FAILURE);
     }
 
-    // Redirect STDOUT to the file using dup2()
+    int stdout_backup = dup(STDOUT_FILENO);
+    if (stdout_backup == -1) {
+        perror("Error saving original stdout");
+        close(fd);
+        exit(EXIT_FAILURE);
+    }
+
     if (dup2(fd, STDOUT_FILENO) == -1) {
         perror("Error using dup2");
         close(fd);
         exit(EXIT_FAILURE);
     }
 
-    // Print buffer (will append to file because STDOUT is redirected)
     printf("%s", buffer);
-    fflush(stdout); // Ensure output is written
+    fflush(stdout);
 
-    // Restore STDOUT (optional, but good practice)
-    int stdOutFd = dup(STDOUT_FILENO); // Backup stdout
-    dup2(stdOutFd, STDOUT_FILENO);
-    close(stdOutFd);
-
-    // Close file descriptor
+    dup2(stdout_backup, STDOUT_FILENO);
+    close(stdout_backup);
     close(fd);
 
-    printf("\nSuccessfully appended %ld characters to '%s'\n", bytesRead, filename);
+    printf("Successfully appended %ld characters to '%s'\n", bytesRead, filename);
+
     return EXIT_SUCCESS;
 }
 
 // TO RUN 
 // ./a.out file1.txt 6
+// Successfully appended 6 characters to 'file1.txt'
+
