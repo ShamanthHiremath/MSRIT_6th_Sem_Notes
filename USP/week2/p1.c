@@ -18,3 +18,6 @@ int main() {
 
     return 0;
 }
+
+// ./a.out file1.txt
+// File opened successfully with file descriptor: 3

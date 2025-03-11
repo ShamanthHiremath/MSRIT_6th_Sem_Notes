@@ -49,3 +49,8 @@ int main(int argc, char *argv[]) {
     putchar('\n');  // Print newline after output
     return EXIT_SUCCESS;
 }
+
+
+// ./a.out file1.txt
+
+//  WUIOEQRGBYUIVRG WHEVEWEYUIWVJHGB QIC VFVGHA Dsjacdjhvdiwdhj

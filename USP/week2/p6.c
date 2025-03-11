@@ -67,3 +67,6 @@ int main(int argc, char *argv[]) {
     printf("\nSuccessfully appended %ld characters to '%s'\n", bytesRead, filename);
     return EXIT_SUCCESS;
 }
+
+// TO RUN 
+// ./a.out file1.txt 6

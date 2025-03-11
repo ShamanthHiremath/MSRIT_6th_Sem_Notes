@@ -13,3 +13,7 @@ int main() {
 
     return 0;
 }
+
+// ./a.out 
+// Enter some text: sblkjabsjadbs
+// You entered: sblkjabsjadbs

@@ -4,9 +4,14 @@
 #include <unistd.h>
 #include <errno.h>
 
-int main() {
+int main(int argc, char *argv[]) {
 
-    const char *filename = "example.txt";
+    if (argc != 2) {
+        fprintf(stderr, "Usage: %s <filename>\n", argv[0]);
+        exit(EXIT_FAILURE);
+    }
+
+    const char *filename = argv[1]; // Get the filename from the command line argument
 
     mode_t mode = S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH;
 
@@ -26,3 +31,6 @@ int main() {
 
     return EXIT_SUCCESS;
 }
+
+// ./a.out file1.txt
+// File 'example.txt' created successfully with file descriptor: 3
