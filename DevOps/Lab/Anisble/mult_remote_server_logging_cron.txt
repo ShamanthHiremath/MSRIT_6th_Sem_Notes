@@ -1,0 +1,6 @@
+Write an Ansible playbook to execute the uptime command on multiple remote servers and store the output in a central log file for comparison.
+• Ensure the following:
+• Your inventory file includes at least two remote servers.
+• The uptime command is executed using the Ansible command module.
+• The output should be stored in a log file on the local control machine
+• Schedule this task using a cron job to run every five minutes.
