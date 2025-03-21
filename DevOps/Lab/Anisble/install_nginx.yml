@@ -1,0 +1,44 @@
+---
+- name: Install and Configure Nginx Web Server
+  hosts: webservers
+  become: yes
+  become_user: root
+  tasks:
+
+    - name: Update apt package list
+      apt:
+        update_cache: yes
+
+    - name: Install Nginx
+      apt:
+        name: nginx
+        state: present
+
+    - name: Ensure Nginx service is enabled and running
+      service:
+        name: nginx
+        enabled: yes
+        state: started
+
+    - name: Deploy custom index.html file
+      copy:
+        dest: /var/www/html/index.html
+        content: |
+          <html>
+            <head>
+              <title>Welcome to Nginx</title>
+            </head>
+            <body>
+              <h1>Hello from Ansible-managed Nginx</h1>
+            </body>
+          </html>
+
+    - name: Open port 80 in the firewall
+      ufw:
+        rule: allow
+        name: 'Nginx Full'
+
+    - name: Ensure Nginx is running and accessible
+      uri:
+        url: http://localhost
+        status_code: 200

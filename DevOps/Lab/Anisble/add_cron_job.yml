@@ -1,0 +1,9 @@
+---
+- name: Schedule uptime task using cron
+  hosts: localhost
+  tasks:
+    - name: Add cron job to execute uptime playbook every 5 minutes
+      cron:
+        name: "Execute uptime playbook"
+        minute: "*/5"
+        job: "ansible-playbook /home/cselab3/new/get_uptime.yml -i /home/cselab3/new/inventory.ini"

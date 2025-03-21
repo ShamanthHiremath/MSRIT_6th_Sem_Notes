@@ -1,0 +1,24 @@
+---
+- name: Capture uptime from multiple servers
+  hosts: webservers
+  become: no
+  tasks:
+
+    - name: Run uptime command
+      command: uptime
+      register: uptime_output
+
+    - name: Ensure log file exists
+      delegate_to: localhost
+      file:
+        path: "/home/{{ ansible_env.USER | default('ubuntu') }}/remote_uptime.log"
+        state: touch
+        mode: '0644'
+
+    - name: Append uptime result to local log file
+      delegate_to: localhost
+      lineinfile:
+        path: "/home/{{ ansible_env.USER | default('ubuntu') }}/remote_uptime.log"
+        line: "{{ inventory_hostname }} - {{ uptime_output.stdout }}"
+        create: yes
+        mode: '0644'
