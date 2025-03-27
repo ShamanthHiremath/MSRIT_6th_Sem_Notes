@@ -1,0 +1,18 @@
+// Create separate folders for each program
+// Copy the related  dataset (.csv, .txt) in the same folders
+// Follow instructions from the main pdf file
+
+
+javac -d . *.java
+
+echo Main-Class: earthquake.driver > Manifest.txt
+
+jar cfm earthquake.jar Manifest.txt earthquake/*.class
+
+// Change the name of the csv file or output fils
+
+hadoop jar earthquake.jar earthquake.csv output
+
+// Run the blow comman to display the dataset analysis in the terminal
+cat output/*
+
