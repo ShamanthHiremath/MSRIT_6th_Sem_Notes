@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Welcome to the Dashboard</h1>
+
+    <form action="{{ url_for('add_patient') }}" method="POST">
+        <input type="text" name="patient" placeholder="Patient Name" required>
+        <button type="submit">Add Patient</button>
+    </form>
+
+    <form action="{{ url_for('add_prescription') }}" method="POST">
+        <input type="text" name="patient" placeholder="Patient Name" required>
+        <button type="submit">Add Prescription</button>
+    </form>
+
+    <form action="{{ url_for('add_test') }}" method="POST">
+        <input type="text" name="patient" placeholder="Patient Name" required>
+        <button type="submit">Add Test</button>
+    </form>
+
+    <form action="{{ url_for('buy_medicine') }}" method="POST">
+        <input type="text" name="patient" placeholder="Patient Name" required>
+        <button type="submit">Buy Medicine</button>
+    </form>
+</body>
+</html>
