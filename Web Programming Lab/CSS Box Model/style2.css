@@ -1,0 +1,87 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Times New Roman", serif;
+  text-align: center;
+  background-color: #fff;
+}
+
+/* Header */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  padding: 10px;
+  border-bottom: 2px solid black;
+}
+
+.logoimg {
+  width: 50px;
+  height: auto;
+  margin-right: 10px;
+}
+
+/* Main Layout */
+.container {
+  display: flex;
+  width: 100%; /* Full width */
+  max-width: 1200px; /* Set a maximum width */
+  margin: 20px auto;
+  border-top: 2px solid red;
+  border-bottom: 2px solid red;
+  flex-wrap: wrap; /* Allows wrapping for smaller screens */
+}
+
+
+/* Left Section (Navigation) */
+.left-section {
+  width: 20%;
+  border-right: 2px solid green;
+  padding: 20px;
+  text-align: left;
+}
+
+.left-section nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.left-section a {
+  color: blue;
+  text-decoration: none;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+/* Right Section (Content) */
+.right-section {
+  width: 80%;
+  padding: 20px;
+  text-align: left;
+}
+
+/* Box for the heading */
+.box {
+  border: 2px solid red;
+  padding: 10px;
+  display: inline-block;
+  margin-bottom: 20px; /* Space between box and text */
+}
+
+/* Paragraph */
+.right-section p {
+  margin-top: 10px; /* Extra space after the box */
+}
+
+/* Footer */
+footer {
+  text-align: left;
+  padding: 10px;
+  margin-top: 20px;
+}
