@@ -1,4 +1,4 @@
-// 3.	Write a  C program to simulate copy command by accepting the filenames from command line. Report all errors.
+// 2.	Write a C program to illustrate the effect of setjmp and longjmp functions on register and volatile variables.
 
 #include <setjmp.h>
 #include<stdio.h>

@@ -1,4 +1,6 @@
-// 5. C program to create a new process and demonstrate the working of vfork function
+// 4. Write a C program to create a new process and demonstrate the working of fork function.
+/*showing how changes to  variables in a child process do not affect the value of the variables in the parent process.*/
+
 
 #include<stdio.h>
 #include<string.h>

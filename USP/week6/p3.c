@@ -1,5 +1,5 @@
-// 4. Write a C program to create a new process and demonstrate the working of fork function.
-/*showing how changes to  variables in a child process do not affect the value of the variables in the parent process.*/
+// 3.	Write a  C program to simulate copy command by accepting the filenames from command line. Report all errors.
+
 
 #include <stdio.h>
 #include <fcntl.h>
