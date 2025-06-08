@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+<title> Closures </title>
+<meta charset="utf-8">
+<script>
+function a() {
+
+    alert('A!');
+
+    function b(){
+        alert('B!'); 
+    }
+
+    return b();
+}
+
+var s = a();
+alert('break');
+s();
+</script>
+</head>
+<body>
+</body>
+</html>

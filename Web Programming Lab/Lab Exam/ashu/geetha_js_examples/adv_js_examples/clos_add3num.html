@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+<head>
+<title> Closures </title>
+<meta charset="utf-8">
+<script>
+function sum(a){
+  return function(b){
+      return function(c){
+           return a+b+c;
+      } 
+  } 
+}
+
+console.log(sum(2)(3)(4));
+</script>
+</head>
+<body>
+</body>
+</html>

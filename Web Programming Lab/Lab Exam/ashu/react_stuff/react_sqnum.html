@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Square of a number</title>
+    <script src="react/react.development.js"></script>
+    <script src="react/react-dom.development.js"></script>
+    <script src="react/prop-types.js"></script>
+    <!-- Don't use this in production: -->
+    <script src="react/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+class App extends React.Component {
+constructor (props)
+{
+	super(props);
+	this.state={
+		data:''
+	}	
+};
+ updateState(e) {
+      this.setState({data: e.target.value});
+   }
+FindSquare=()=>{
+
+  var A = this.state.data ;
+  var B = Math.pow(A, 2);
+  alert("Square = " + B.toString());
+  data1: this.state.data;
+   this.setState({
+                result: B.toString()
+            })
+  }
+
+ render() {
+    return (
+      <div>
+	  <h1> Square of a number </h1>
+	   <input type = "text" value = {this.state.data} onChange = {this.updateState.bind(this)} />
+	   
+	  <button  onClick={this.FindSquare}> Find Square </button>
+	  <h4>square of {this.state.data} is {this.state.result}</h4>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(<div>
+              <App> </App>
+			  </div>, document.getElementById('root'));
+
+    </script>
+    
+  </body>
+</html>

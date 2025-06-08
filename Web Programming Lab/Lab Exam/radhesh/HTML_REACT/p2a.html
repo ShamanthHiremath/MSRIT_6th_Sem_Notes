@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id = "ip" placeholder="text">
+    <button onclick = "convert()">Submit</button>
+    <p id = "op"></p>
+</body>
+<script>
+    function convert(){
+        const months = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+        ];
+        const ip = document.getElementById("ip").value;
+
+        if(isNaN(ip)){
+            document.getElementById("op").innerText = "NaN";
+
+        }else{
+            document.getElementById("op").innerText = months[ip-1];
+
+
+        }
+    }
+</script>
+</html>

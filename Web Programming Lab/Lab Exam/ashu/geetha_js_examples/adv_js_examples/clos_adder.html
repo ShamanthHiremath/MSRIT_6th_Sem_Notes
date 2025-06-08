@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+<title> Closures </title>
+<meta charset="utf-8">
+<script>
+function makeAdder(x, y) {
+	
+	var adder = function() {
+		
+		return x + y 
+	};
+	
+return adder;
+}
+var f = makeAdder(2, 3);
+var result = f();
+console.log("Result is: " + result);
+
+var g = makeAdder(4, 5);
+var anotherResult = g();
+console.log("Another result is: " + anotherResult);
+</script>
+</head>
+<body>
+</body>
+</html>

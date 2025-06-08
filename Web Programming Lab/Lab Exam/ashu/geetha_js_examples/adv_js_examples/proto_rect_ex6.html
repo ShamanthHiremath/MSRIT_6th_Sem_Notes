@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+
+<script>
+function Rectangle(x, y) {
+     this.x = x;
+     this.y = y;
+ }
+ 
+ Rectangle.prototype.perimeter = function() {
+     return 2 * (this.x + this.y);
+ }
+  
+Rectangle.prototype.display = function()
+{
+  console.log("x="+this.x+",y="+this.y);
+}  
+
+
+ var rect = new Rectangle(1, 2);
+ rect.display()
+ console.log("peri="+rect.perimeter()); // outputs '6'
+ 
+ 
+//rect.perimeter= function()
+//{
+  //return (this.x * this.y)
+//}
+//console.log("area of rectangle="+rect.perimeter());
+Rectangle.prototype.perimeter = function() {
+return (this.x * this.y)
+}
+
+
+
+var rect1 = new Rectangle(3, 3);
+rect1.display()
+console.log(rect1.perimeter());
+rect1.perimeter= function()
+{
+  return (this.x * this.x)
+}
+console.log("area of square="+rect1.perimeter());
+
+</script>
+</body>
+</html>

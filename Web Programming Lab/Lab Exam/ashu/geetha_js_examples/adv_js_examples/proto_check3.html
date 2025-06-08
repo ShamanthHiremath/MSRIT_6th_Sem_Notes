@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<script>
+
+/// original classes
+function Head() {
+    this.glasses=1
+}
+function Table() {
+    this.pen = 3;
+}
+function Bed() {
+    this.sheet = 1;
+    this.pillow = 2;
+}
+function Pocket()
+{
+	this.money=2000;
+}
+// set up the prototype chain
+Table.prototype = new Head();
+Bed.prototype = new Table();
+Pocket.prototype = new Bed();
+var pocket = new Pocket();
+var bed= new Bed();
+var table = new Table();
+var head = new Head();
+console.log(pocket.pen); 
+console.log(bed.glasses);
+console.log(table.money);
+console.log(head.glasses);
+console.log(pocket.glasses);
+</script>
+
+</body>
+</html>

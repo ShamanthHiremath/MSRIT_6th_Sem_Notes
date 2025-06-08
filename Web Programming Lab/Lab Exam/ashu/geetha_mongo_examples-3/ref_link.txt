@@ -1,0 +1,6 @@
+https://www.scaler.com/topics/nodejs/connect-mongodb-with-node-js/
+
+mkdir mongodb-nodejs
+cd mongodb-nodejs
+npm init -y
+npm install mongodb --save

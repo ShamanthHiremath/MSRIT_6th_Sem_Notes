@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head><title>Pluralize Example</title></head>
+<body>
+  <script>
+    function pluralize(noun, number) {
+      const irregulars = {
+        sheep: 'sheep',
+        goose: 'geese',
+        person: 'people',
+        child: 'children'
+      };
+
+      let pluralNoun;
+
+      if (number === 1) {
+        pluralNoun = noun;
+      } else if (irregulars[noun]) {
+        pluralNoun = irregulars[noun];
+      } else {
+        pluralNoun = noun + 's';
+      }
+
+      return `${number} ${pluralNoun}`;
+    }
+
+    console.log(pluralize("cat", 5));   // 5 cats
+    console.log(pluralize("dog", 1));   // 1 dog
+    console.log(pluralize("sheep", 3)); // 3 sheep
+    console.log(pluralize("goose", 2)); // 2 geese
+  </script>
+</body>
+</html>

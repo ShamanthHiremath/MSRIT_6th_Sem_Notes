@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Records</title>
+    <script src="1b.js"></script>
+</head>
+<body>
+    <h1>Student Records Manager</h1>
+    <h2>Add New Student</h2>
+    <form action="http://localhost:3000/students" method="POST">
+        <p>USN: <input type="text" name="USN" required></p>
+        <p>Name: <input type="text" name="Name" required></p>
+        <p>Subject Code: <input type="text" name="Subject_code" required></p>
+        <p>CIE Score: <input type="number" name="CIE" required></p>
+        <p><button type="submit">Add Student</button></p>
+    </form>
+
+    <hr>
+    <h2>Students with CIE < 20</h2>
+    <button onclick="getStudents()">Get Low CIE Students</button>
+    <div id="results"></div>
+    <script>
+        function getStudents() {
+            fetch('http://localhost:3000/students/low-cie')
+                .then(response => response.json())
+                .then(students => {
+                    let html = '';
+                    students.forEach(student => {
+                        html += `<p>${student.USN} - ${student.Name} - CIE: ${student.CIE}</p>`;
+                    });
+                    document.getElementById('results').innerHTML = html;
+                });
+        }
+    </script>
+</body>
+</html>

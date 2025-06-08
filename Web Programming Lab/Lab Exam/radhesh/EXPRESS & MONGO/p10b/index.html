@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Faculty Entry</title>
+</head>
+<body>
+  <h2>Enter Faculty Details</h2>
+  <form action="/addfaculty" method="post">
+    <label>ID: <input type="text" name="id" required></label><br><br>
+    <label>Title: 
+      <select name="title">
+        <option>Professor</option>
+        <option>Associate Professor</option>
+        <option>Assistant Professor</option>
+      </select>
+    </label><br><br>
+    <label>Name: <input type="text" name="name" required></label><br><br>
+    <label>Branch: 
+      <select name="branch">
+        <option>CSE</option>
+        <option>ECE</option>
+        <option>MECH</option>
+        <option>ISE</option>
+      </select>
+    </label><br><br>
+    <button type="submit">Submit</button>
+  </form>
+  <br>
+  <a href="/cseprofessors">View CSE Professors</a>
+</body>
+</html>

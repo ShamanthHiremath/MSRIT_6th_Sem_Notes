@@ -1,0 +1,19 @@
+#body {
+  font-size: 1em;  }
+#container { 
+  width: 920px;  }
+#banner { 
+  width: 920px;  height: 120px;  }
+#nav { 
+  float: left;  width: 200px;  }
+#content {  
+   width: 720px; }	
+#footer { 
+  font-size: .8em;  }
+.float {float:right;}
+.abs {position: absolute;
+	top: 150px;
+	left: 180px;}
+.rel {position: relative;
+	top: 150px;
+    left: 180px}

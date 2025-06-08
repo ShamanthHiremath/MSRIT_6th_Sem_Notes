@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+<head>
+<title> Closures </title>
+<meta charset="utf-8">
+<script>
+function newAdd(num1) {
+    return function (num2) {//num1 variable will be still alive after returning this anonymous function.
+        return num1+num2;
+    }
+}
+sum=newAdd(2)(5);
+console.log(sum)
+</script>
+</head>
+<body>
+</body>
+</html>

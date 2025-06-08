@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+<title> Closures </title>
+<meta charset="utf-8">
+<script>
+function f(x) { 
+   function g(y) 
+   { return x + y;
+   };
+   return g ;
+ }
+var h = f(3);
+var j  = f(4);
+var z = h(5);
+var w = j(7);
+
+
+</script>
+</head>
+<body>
+</body>
+</html>

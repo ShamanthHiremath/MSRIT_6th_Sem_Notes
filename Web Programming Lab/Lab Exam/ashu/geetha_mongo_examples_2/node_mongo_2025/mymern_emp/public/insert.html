@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert-REACT</title>
+    <script src="react/react.development.js"></script>
+    <script src="react/react-dom.development.js"></script>
+    <script src="react/prop-types.js"></script>
+	<script src="react/axios.min.js"></script>
+    <script src="react/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+class App extends React.Component{
+  
+  constructor(props) {
+	super(props);
+	this.state = {
+	empid:'',
+  	empname: '',
+	empdata:[]
+	}
+  };
+  
+handleSubmit(e){
+    e.preventDefault();
+	const mydata1=
+	{
+	  empid: this.state.empid,
+	  empname:this.state.empname
+	};
+    axios({
+      method: "POST", 
+      url:"http://localhost:8888/api/savedata", 
+      data:  mydata1,
+	 
+    }).then((response)=>{
+		console.log("Data has been sent to server");
+      if (response.data.status === 'success'){
+	     console.log("Data has been submitted");
+		//alert("Employee Inserted.  "+response.data.mydata.empid+":"+response.data.mydata.empname)
+		console.log(response.data.mydata.empid+":"+response.data.mydata.empname+":"+response.data.mydata.serverMessage);
+		const myresponsedata = JSON.stringify(response.data.mydata)
+		this.setState({empdata:myresponsedata})
+        this.resetForm()
+      }else if(response.data.status === 'fail'){
+        alert("Duplicate Emplyee ID")
+		this.resetForm()
+      }
+	  
+    })
+	.catch((e) => {
+	console.log("Internal Server error"+e);
+	});;
+	
+  };
+
+  resetForm(){
+     this.setState({empid: '',  empname: ''})
+  };
+
+    
+  render() {
+     //console.log("State:",this.state)
+	return(
+  	<div className="App">
+  	<form id="contact-form" onSubmit={this.handleSubmit.bind(this)} method="POST">
+  	<div className="form-group">
+      	<label htmlFor="empid">Employee ID :</label>
+      	<input type="text" className="form-control" id="empid" name="empid" value={this.state.empid} onChange={this.onEmpChange.bind(this)} />
+  	</div>
+  	<br/>
+  	<div className="form-group">
+      	<label htmlFor="empname">Employee Name :</label>
+      	<input type="text" className="form-control"  id="empname" name="empname" value={this.state.empname} onChange={this.onEmpChange.bind(this)} />
+  	</div>
+		<br/>
+  	<div>
+	<button type="submit" className="btn btn-primary">Submit</button>
+	</div>
+  	</form>
+	
+	<h3>{this.state.empdata}</h3>
+	<a href="index.html">Back</a>
+  	</div>
+	);
+	
+  }
+// Getting access to entered values
+   onEmpChange(event) 
+   {
+       this.setState({ [event.target.name]: event.target.value });  
+   }
+  
+}
+ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+    
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Live Name Update</title>
+    <script src="react/react.development.js"></script>
+    <script src="react/react-dom.development.js"></script>
+    <script src="react/prop-types.js"></script>
+    <script src="react/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        function Updater(){
+            const [name , setName] = React.useState("");
+            return(
+                <div>
+                    <h1>enter name</h1>
+                    <input type="text" value = {name} onChange = {(e) => setName(e.target.value)} />
+                    <h1>{name}</h1>
+                </div>
+            )
+        }
+        ReactDOM.createRoot(document.getElementById("root")).render(<Updater />)
+    </script>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Employee Info</title>
+    <script src="react/react.development.js"></script>
+    <script src="react/react-dom.development.js"></script>
+    <script src="react/prop-types.js"></script>
+    <script src="react/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+        function Employee(){
+            const [name , setName] = React.useState("Alice");
+            const [address , setAddress] = React.useState("Bangalore");
+            const company = "tech";
+
+            const change= ()=>{
+                setName("Bob");
+                setAddress('Mumbai');
+            };
+
+            return(
+                <div>
+                    <h2>Emp info</h2>
+                    <p>name {name}</p>
+                    <p>add {address}</p>
+                    <p>comp {company}</p>
+                    <button onClick = {change}>change</button>
+                </div>
+            )
+        }
+        ReactDOM.render(<Employee />, document.getElementById("root"));
+    </script>
+  </body>
+</html>

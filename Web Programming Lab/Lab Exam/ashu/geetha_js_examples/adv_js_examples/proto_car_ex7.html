@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script>
+function Car(name, model) {
+     this.name = name;
+     this.model = model;
+	 //this.display = function() {
+     //console.log("name="+this.name+" model="+this.model)
+	 //}
+ }
+ 
+ Car.prototype.display = function() {
+     console.log("name="+this.name+" model="+this.model)
+ }
+ car1.prototype=new Car();
+ 
+ //car1.prototype.constructor=car1;
+
+ function car1(name,model,color)
+ {
+    Car.call(this,name,model)
+	this.color="red";
+ }
+  car1.prototype.display2= function() {
+   console.log("color="+this.color)
+  }
+  
+var newcar= new Car("zen","2016");
+newcar.display()
+var c1 = new car1("maruthi","2007","white")
+c1.display()
+c1.display2()
+</script>
+</body>
+</html>

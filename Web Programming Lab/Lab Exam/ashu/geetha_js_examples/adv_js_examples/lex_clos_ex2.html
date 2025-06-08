@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+<title> Closures </title>
+<meta charset="utf-8">
+<script>
+function vehicle()
+{
+var color = 'red';
+ function bmw()
+ {
+   var country = "Germany"
+   console.log(country);
+   //console.log(color);
+ }
+  return bmw;
+}
+var func = vehicle();
+func();
+</script>
+</head>
+<body> </body>
+</html>

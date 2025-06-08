@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+<title> Closures </title>
+<meta charset="utf-8">
+<script>
+function makeAdder(x) {
+	return function(y)
+	{
+	  return x + y;
+	};
+}
+
+var add5 = makeAdder(5)
+var add10=makeAdder(10)
+console.log(add5(2))
+console.log(add10(2))
+	
+</script>
+</head>
+<body>
+</body>
+</html>

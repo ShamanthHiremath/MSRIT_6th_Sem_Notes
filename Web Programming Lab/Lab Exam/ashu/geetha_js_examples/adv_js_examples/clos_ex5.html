@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+<head>
+<title> Closures </title>
+<meta charset="utf-8">
+<script>
+function sayAlice() {
+    var say = function() { console.log(alice); }
+    // Local variable that ends up within closure
+    var alice = 'Hello Alice';
+    return say;
+}
+sayAlice()();// logs "Hello Alice"
+</script>
+</head>
+<body> </body>
+</html>

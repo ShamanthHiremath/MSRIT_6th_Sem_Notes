@@ -1,0 +1,23 @@
+.parent {
+ border: 2px black dotted;
+ display: inline-block;
+}
+.box {
+ display: inline-block;
+ background: red;
+ width: 100px;
+ height: 100px;
+}
+/*#two {
+  top: 20px;
+  left: 20px;
+  background: green;
+  position: relative;
+}*/
+
+#two {
+  top: 20px;
+  left: 20px;
+  background: green;
+  position: absolute;
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body>
+<input id="input" placeholder="Enter text">
+<button onclick="run()">Translate</button>
+<p id="output"></p>
+
+<script>
+function translate(text) {
+    const isConsonant = (ch) => /[bcdfghjklmnpqrstvwxyz]/i.test(ch);
+    let result = "";
+    for (let ch of text) {
+        if (isConsonant(ch)) {
+            result += ch + "o" + ch;
+        } else {
+            result += ch;
+        }
+    }
+    return result;
+}
+function run() {
+    const input = document.getElementById("input").value;
+    document.getElementById("output").innerText = translate(input);
+}
+</script>
+</body>
+</html>

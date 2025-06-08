@@ -1,0 +1,102 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HR Employee Management</title>
+    <style>
+        #result { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Add Employee</h1>
+    <form id="employeeForm">
+        Name: <input type="text" name="emp_name" required><br>
+        Email: <input type="email" name="email" required><br>
+        Phone: <input type="text" name="phone" required><br>
+        Hire Date: <input type="date" name="hire_date" required><br>
+        Job Title: <input type="text" name="job_title" required><br>
+        Salary: <input type="number" name="salary" required><br>
+        <button type="button" onclick="addEmployee()">Add Employee</button>
+    </form>
+    <button onclick="fetchHighSalaryEmployees()">Show Employees with Salary > 50000</button>
+    <div id="result"></div>
+    <script>
+        async function addEmployee() {
+            const form = document.getElementById('employeeForm');
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+            data.salary = Number(data.salary);
+            try {
+                const response = await fetch('http://localhost:3000/employees', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                const result = await response.text();
+                document.getElementById('result').innerHTML = result;
+            } catch (err) {
+                document.getElementById('result').innerHTML = 'Error: ' + err;
+            }
+        }
+        async function fetchHighSalaryEmployees() {
+            try {
+                const response = await fetch('http://localhost:3000/employees/high-salary');
+                const employees = await response.json();
+                const result = document.getElementById('result');
+                result.innerHTML = '<h3>Employees with Salary > 50000</h3>';
+                if (employees.length === 0) {
+                    result.innerHTML += '<p>No employees found.</p>';
+                } else {
+                    result.innerHTML += '<ul>';
+                    employees.forEach(emp => {
+                        result.innerHTML += `
+                            <li>
+                                Name: ${emp.emp_name},
+                                Email: ${emp.email},
+                                Phone: ${emp.phone},
+                                Hire Date: ${emp.hire_date},
+                                Job Title: ${emp.job_title},
+                                Salary: ${emp.salary}
+                            </li>
+                        `;
+                    });
+                    result.innerHTML += '</ul>';
+                }
+            } catch (err) {
+                document.getElementById('result').innerHTML = 'Error: ' + err;
+            }
+        }
+    </script>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>HR Employee Management</h1>
+    
+    <div class="form-section">
+        <h2>Add Employee</h2>
+        <form action="http://localhost:3000/employees" method="POST">
+            Name: <input type="text" name="emp_name" required><br>
+            Email: <input type="email" name="email" required><br>
+            Phone: <input type="text" name="phone" required><br>
+            Hire Date: <input type="date" name="hire_date" required><br>
+            Job Title: <input type="text" name="job_title" required><br>
+            Salary: <input type="number" name="salary" required><br>
+            <button type="submit">Add Employee</button>
+        </form>
+    </div>
+    
+    <div class="form-section">
+        <h2>View High Salary Employees</h2>
+        <form action="http://localhost:3000/employees/high-salary" method="GET">
+            <button type="submit">Show Employees with Salary > 50000</button>
+        </form>
+    </div>
+</body>
+</html>

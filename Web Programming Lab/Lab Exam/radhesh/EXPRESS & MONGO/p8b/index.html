@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Campus Selection Form</title>
+</head>
+<body>
+  <h2>Final Year Campus Selection</h2>
+  <form action="/add" method="post">
+    <label>USN: <input type="text" name="usn" required></label><br><br>
+    <label>Name: <input type="text" name="name" required></label><br><br>
+    <label>Company Name:
+      <select name="company">
+        <option>Infosys</option>
+        <option>TCS</option>
+        <option>Wipro</option>
+        <option>Accenture</option>
+      </select>
+    </label><br><br>
+    <button type="submit">Submit</button>
+  </form>
+  <br>
+  <a href="/infosys">View Infosys Selections</a>
+</body>
+</html>

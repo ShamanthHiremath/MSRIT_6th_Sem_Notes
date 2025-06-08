@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Clouse Example</title>
+
+</head>
+<body>
+
+
+<h1> Hello </h1>
+<button id="red"> Turn red </button>
+<button id="blue"> Turn blue </button>
+<script>
+
+function colorize(color)
+{
+  return function()
+  {
+  document.body.style.color=color;
+  };
+}
+var redf=colorize('red')  //closure
+var bluef=colorize('blue')  //closure
+//It is probably happening because the script runs before the DOM 
+//loads.Try putting the script in window.onload OR
+// move it inside the body, to the very bottom, just before the closing </body> tag.
+//window.onload = function () {
+document.getElementById('red').onclick=redf
+document.getElementById('blue').onclick=bluef
+//}
+</script>
+</body>
+</html>

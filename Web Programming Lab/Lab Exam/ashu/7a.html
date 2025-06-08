@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Student Form</h1>
+    <form onsubmit="alert('Form submitted successfully!');return false;">
+        <label>Name</label>
+        <input type="text" name="name" required pattern="[A-Za-z\s]+"><br><br>
+        <label>Email</label>
+        <input type="email" name="email" required placeholder="Please enter a valid email address">
+        <label>Phone</label>
+        <input type="tel" name="phone" required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="000-000-0000">
+        <label>Semester</label>
+        <input type="number" name="semester" min="1" max="8">
+        Branch: <select name="branch" required>
+            <option value="CSE">CSE</option>
+            <option value="ISE">ISE</option>
+            <option value="ECE">ECE</option>
+            <option value="EEE">EEE</option>
+            <option value="ME">ME</option>
+        </select>
+        <label>Website:</label>
+        <input type="url" name="website" required pattern="http://.*" placeholder="http://"><br><br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

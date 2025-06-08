@@ -1,0 +1,30 @@
+<!doctype html><html>
+<head>
+<title> Closures </title>
+<meta charset="utf-8">
+<script>
+function applyTwice()
+{
+	var number = [1,2,3,4,5]
+	var dubnumbers=[];
+			function dubble() {
+			
+			for (var i = 0; i < number.length; i ++){
+				var dub = number[i];
+				var dubb = dub*2;
+				dubnumbers.push(dubb);
+				}
+			return dubnumbers;
+			}
+		return dubble()
+}
+var mydouble = applyTwice()
+console.log(mydouble)
+
+
+
+</script>
+</head>
+<body>
+</body>
+</html>

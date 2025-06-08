@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+<title> prototype _check</title>
+<meta charset="utf-8">
+<script>
+
+function Person(name) {
+   this.name = name;
+}
+
+var tim = new Person("Tim");
+
+
+Person.prototype.sayHello = function() {
+    return "Hello, " + this.name;
+};
+var moxie = new Person("Moxie");
+console.log(moxie.sayHello());  // returns "Hello, Moxie"
+
+// Notice that sayHello still works for tim even though tim was created
+// before the sayHello function was added to the prototype.
+console.log(tim.sayHello());    // returns "Hello, Tim"
+</script>
+</head>
+<body> </body>
+</html>

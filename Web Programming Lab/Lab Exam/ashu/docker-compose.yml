@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      # Mount the local 1b.js for easier development/testing if needed
+      # For a strict lab environment, you might omit this to use only what's copied by Dockerfile
+      - ./1b.js:/usr/src/app/1b.js
+      # If node_modules are copied by Dockerfile, no need to mount them unless they change often
+      # - ./node_modules:/usr/src/app/node_modules 
+    depends_on:
+      - mongo
+    environment:
+      # This environment variable can be used by 1b.js to connect to MongoDB
+      # You'd need to modify 1b.js to use process.env.MONGO_URL
+      # Alternatively, hardcode 'mongodb://mongo:27017/student_records' in 1b.js
+      MONGO_URL: mongodb://mongo:27017/student_records
+    # If your app needs to wait for MongoDB to be ready, consider a wait-for-it script
+
+  mongo:
+    image: mongo:3.2 # Using MongoDB 3.2 - one of the older official images still available
+    ports:
+      - "27017:27017" # Exposes MongoDB on the host's 27017, useful for direct inspection
+    volumes:
+      - mongo-data:/data/db # Persists MongoDB data
+
+volumes:
+  mongo-data:

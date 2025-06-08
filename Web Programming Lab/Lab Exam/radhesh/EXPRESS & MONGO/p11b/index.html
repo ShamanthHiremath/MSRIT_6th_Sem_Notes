@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Attendance Management</title>
+</head>
+<body>
+  <h2>Add Student Attendance</h2>
+  <form action="/add" method="post">
+    <label>USN: <input type="text" name="usn" required></label><br><br>
+    <label>Name: <input type="text" name="name" required></label><br><br>
+    <label>Total Classes: <input type="number" name="total_classes" required></label><br><br>
+    <label>Attended Classes: <input type="number" name="attended_classes" required></label><br><br>
+    <button type="submit">Submit</button>
+  </form>
+  <br>
+  <a href="/shortage">View Students Below 75%</a>
+</body>
+</html>

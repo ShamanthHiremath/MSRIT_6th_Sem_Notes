@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Forms</title>
+    <script src="react/react.development.js"></script>
+    <script src="react/react-dom.development.js"></script>
+    <script src="react/prop-types.js"></script>
+    <!-- Don't use this in production: -->
+    <script src="react/babel.min.js"></script>
+	
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+         class Qb6a extends React.Component {
+            constructor(props) {
+               super(props);
+               this.state = {data: ''}
+            };
+            updateState(e) {
+               this.setState({data: e.target.value});
+            }
+         
+            render() {
+               return (
+            
+               <div>
+                  <label>Username : </label>
+                     <input type = "text" value = {this.state.data} 
+                        onChange = {this.updateState.bind((this))} />
+                     <h1>{this.state.data}</h1>
+               </div>
+               
+               );
+            }
+         }
+         ReactDOM.render(<Qb6a />, document.getElementById('root'));
+    </script>
+    
+  </body>
+</html>

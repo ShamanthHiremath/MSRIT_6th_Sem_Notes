@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+<title> Closures </title>
+<meta charset="utf-8">
+<script>
+var getDay = (function () {
+    var days = [
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday',
+        'Sunday'
+    ];
+
+    return function ( n ) {
+        return days[ n - 1 ];
+    };
+}());
+var j=getDay(3)
+console.log(j)
+</script>
+</head>
+<body> </body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+
+<script>
+function myObject(){
+    this.iAm = 'an object';
+    this.whatAmI = function(){
+        alert('I am ' + this.iAm);
+    };
+};
+var myNewObject = new myObject();
+myNewObject.whatAmI();
+
+</script>
+</body>
+</html>

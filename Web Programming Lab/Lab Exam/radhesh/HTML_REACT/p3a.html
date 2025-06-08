@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tax Calculator</title>
+</head>
+<body>
+    <input type="number" id="price" placeholder="Price">
+    <br>
+    <input type="number" id="tax" placeholder="Tax (%)">
+    <br>
+    <button onclick="calculate()">Submit</button>
+    <p id="output"></p>
+    <script>
+        function calculate1(base) {
+            return function(tax) {
+                return base + (base * tax / 100);
+            };
+        }
+        function calculate() {
+            const price = parseFloat(document.getElementById("price").value);
+            const tax = parseFloat(document.getElementById("tax").value);
+            const getNetPrice = calculate1(price);  // Closure with base price
+            const res = getNetPrice(tax);           // Use closure with tax
+            document.getElementById("output").innerText = `Net Price: ₹${res.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>

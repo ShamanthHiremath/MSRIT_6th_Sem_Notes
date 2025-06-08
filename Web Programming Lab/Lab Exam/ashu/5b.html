@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Grade Management</title>
+  <style>
+    #result { margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h1>Student Management</h1>
+  <form action="http://localhost:3000/students" method="POST" id="studentForm">
+    <label>Name:</label>
+    <input type="text" name="name" required><br>
+    <label>USN:</label>
+    <input type="text" name="usn" required><br>
+    <label>Department:</label>
+    <input type="text" name="dept" required><br>
+    <label>Grade:</label>
+    <input type="text" name="grade" required><br>
+    <button type="submit">Add Student</button>
+  <form id="studentForm">
+    Name: <input type="text" name="name" required><br>
+    USN: <input type="text" name="usn" required><br>
+    Department: <input type="text" name="dept" required><br>
+    Grade: <input type="text" name="grade" required><br>
+    <button type="button" onclick="addStudent()">Add Student</button>
+  </form>
+  <form id="updateForm">
+    Name: <input type="text" name="name" required><br>
+    New Grade: <input type="text" name="grade" required><br>
+    <button type="button" onclick="updateGrade()">Update Grade</button>
+  </form>
+  <button onclick="showStudents()">Show All Students</button>
+  <div id="result"></div>
+  <script>
+    async function addStudent() {
+      const form = document.getElementById('studentForm');
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+      try {
+        const response = await fetch('http://localhost:3000/students', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        const result = await response.text();
+        document.getElementById('result').innerHTML = result;
+      } catch (err) {
+        document.getElementById('result').innerHTML = 'Error: ' + err;
+      }
+    }
+    async function updateGrade() {
+      const form = document.getElementById('updateForm');
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+      try {
+        const response = await fetch('http://localhost:3000/students/update', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        const result = await response.text();
+        document.getElementById('result').innerHTML = result;
+      } catch (err) {
+        document.getElementById('result').innerHTML = 'Error: ' + err;
+      }
+    }
+    async function showStudents() {
+      try {
+        const response = await fetch('http://localhost:3000/students');
+        const students = await response.json();
+        const result = document.getElementById('result');
+        result.innerHTML = '<h3>All Students</h3>';
+        if (students.length === 0) {
+          result.innerHTML += '<p>No students found.</p>';
+        } else {
+          result.innerHTML += '<ul>';
+          students.forEach(student => {
+            result.innerHTML += `
+              <li>
+                Name: ${student.name},
+                USN: ${student.usn},
+                Dept: ${student.dept},
+                Grade: ${student.grade}
+              </li>
+            `;
+          });
+          result.innerHTML += '</ul>';
+        }
+      } catch (err) {
+        document.getElementById('result').innerHTML = 'Error: ' + err;
+      }
+    }
+  </script>
+</body>
+</html>

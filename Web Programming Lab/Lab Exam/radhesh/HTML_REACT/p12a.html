@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Stack and Queue Implementation</title>
+</head>
+<body>
+  <h2>Stack Operations</h2>
+  <input type="text" id="inputStack" placeholder="Enter Stack Value" />
+  <button id="stackPush">Push</button>
+  <button id="stackPop">Pop</button>
+  <p>Stack: <span id="stackDisplay"></span></p>
+
+  <h2>Queue Operations</h2>
+  <input type="text" id="inputQueue" placeholder="Enter Queue Value" />
+  <button id="queueEnq">Enqueue</button>
+  <button id="queueDeq">Dequeue</button>
+  <p>Queue: <span id="queueDisplay"></span></p>
+
+  <script type="module">
+    class Stack {
+      constructor() {
+        this.items = [];
+      }
+      push(item) {
+        this.items.push(item);
+      }
+      pop() {
+        return this.items.pop();
+      }
+      getAll() {
+        return [...this.items];
+      }
+    }
+
+    class Queue {
+      constructor() {
+        this.items = [];
+      }
+      enqueue(item) {
+        this.items.push(item);
+      }
+      dequeue() {
+        return this.items.shift();
+      }
+      getAll() {
+        return [...this.items];
+      }
+    }
+
+    const stack = new Stack();
+    const queue = new Queue();
+
+    document.getElementById("stackPush").onclick = () => {
+      const val = document.getElementById("inputStack").value;
+      if (val) stack.push(val);
+      updateStackDisplay();
+    };
+
+    document.getElementById("stackPop").onclick = () => {
+      stack.pop();
+      updateStackDisplay();
+    };
+
+    document.getElementById("queueEnq").onclick = () => {
+      const val = document.getElementById("inputQueue").value;
+      if (val) queue.enqueue(val);
+      updateQueueDisplay();
+    };
+
+    document.getElementById("queueDeq").onclick = () => {
+      queue.dequeue();
+      updateQueueDisplay();
+    };
+
+    function updateStackDisplay() {
+      document.getElementById("stackDisplay").innerText = stack.getAll().join(", ");
+    }
+
+    function updateQueueDisplay() {
+      document.getElementById("queueDisplay").innerText = queue.getAll().join(", ");
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+db.movie.insert({
+    "name": "Avengers: Endgame",
+    "time": ["14:15", "16:00", "21:30", "23:00"],
+    "rating": 8.8
+})
+
+db.movie.find().pretty()
+
+db.movie.insert({
+    "name": "The Lord Of The Rings: The return of the king",
+    "time": ["15:00", "20:00"],
+    "rating": 8.9
+})
+
+db.movie.insert({
+    "name": "The Godfather",
+    "time": ["21:00", "23:50"],
+    "rating": 9.2
+})
