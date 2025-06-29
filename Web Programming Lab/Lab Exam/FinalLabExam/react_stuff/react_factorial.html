@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Square of a number</title>
+    <script src="react/react.development.js"></script>
+    <script src="react/react-dom.development.js"></script>
+    <script src="react/prop-types.js"></script>
+    <!-- Don't use this in production: -->
+    <script src="react/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+	
+class Factorial extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      items: <li>Items loading</li>
+    }
+  }
+  
+  componentDidMount() {
+    this.showItems();
+  }
+  
+  showItems() {
+  
+    let items = this.props.data.map((n) => { 
+      let result = this.factorial(n);
+      return <li className="list-group-item">{ n }! = { result }</li> 
+    }); 
+    
+    this.setState({
+      items: items
+    });
+  }
+  
+  factorial(n) {
+    if (n === 0) return 1;
+    let f = 1;
+    for (let i = 1; i < n; i++) {
+        f = f * (i + 1);
+    }
+    return f;
+  }
+
+  render() {
+    return (
+      <div className="row">
+        <div className="col-12">
+          <h1 className="text-primary text-center">Factorial n!</h1>
+            <ul className="list-group">
+            { this.state.items }
+          </ul>
+        </div>
+      </div>
+    );
+  }
+}
+
+{/*const data = [5,2,3,4];*/}
+const data = [5]
+ReactDOM.render(<Factorial data={ data } />, document.getElementById("root"));
+
+    </script>
+    
+  </body>
+</html>
