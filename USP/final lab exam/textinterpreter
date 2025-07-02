@@ -1,0 +1,2 @@
+#!/bin/bash
+exec "/workspaces/MSRIT_6th_Sem_Notes/USP/final lab exam/echoall" "$@"
