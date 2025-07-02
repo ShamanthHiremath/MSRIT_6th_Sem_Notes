@@ -5,7 +5,7 @@
 
 
 // # View system logs
-// sudo tail -f /var/log/syslog
+// sudo tail -f /var/log/syslog | grep daemon_ex
 
 
 // ps aux | grep daemon (find id of ./a.out  with tty as "?") 

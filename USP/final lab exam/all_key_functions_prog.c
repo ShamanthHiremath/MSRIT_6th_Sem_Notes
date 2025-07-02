@@ -482,7 +482,7 @@ else{
     print("check zombies using ps aux | grep filename");
     sleep(30);
     wait(NULL);
-    print("no zombie");
+    printf("no zombie");
 }
 
 // #########################################################################################################################
