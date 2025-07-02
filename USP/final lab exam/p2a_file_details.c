@@ -16,22 +16,22 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    struct stat fileStat; // Structure to hold file details
+    struct stat fstat; // Structure to hold file details
 
     // Get file statistics using stat()
-    if (stat(argv[1], &fileStat) == -1) {
+    if (stat(argv[1], &fstat) == -1) {
         perror("stat");
         return 1;
     }
 
     // Display file details
     printf("File Name: %s\n", argv[1]);                 // Filename
-    printf("File Size: %ld bytes\n", fileStat.st_size); // Size in bytes
-    printf("Number of Hard Links: %lu\n", fileStat.st_nlink); // Hard link count
-    printf("File Inode: %lu\n", fileStat.st_ino);       // Unique inode number
-    printf("File Permissions: %o\n", fileStat.st_mode); // File mode (permissions)
-    printf("Last Access Time: %s", ctime(&fileStat.st_atime)); // Last accessed time
-    printf("Last Modification Time: %s", ctime(&fileStat.st_mtime)); // Last modified time
+    printf("File Size: %ld bytes\n", fstat.st_size); // Size in bytes
+    printf("Number of Hard Links: %lu\n", fstat.st_nlink); // Hard link count
+    printf("File Inode: %lu\n", fstat.st_ino);       // Unique inode number
+    printf("File Permissions: %o\n", fstat.st_mode); // File mode (permissions)
+    printf("Last Access Time: %s", ctime(&fstat.st_atime)); // Last accessed time
+    printf("Last Modification Time: %s", ctime(&fstat.st_mtime)); // Last modified time
     
     return 0;
 }

@@ -22,13 +22,13 @@ int main(){
     }
     if (pid2 == 0){
         printf("second pid:%d\n", getpid());
-        sleep(4);
+        sleep(2);
         exit(0);
     }
 
-    wait(&st);
+    wait(NULL);
     printf("first wait\n");
-    sleep(1);
+    sleep(2);
     waitpid(pid2, &st, 0);
     printf("second wait\n");
 

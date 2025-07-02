@@ -16,13 +16,11 @@
 ///inter.c
 #include <stdio.h>
 #include <unistd.h>
-#include <sys/wait.h>
-
 int main() {
     pid_t pid = fork();
 
     if(pid == 0){
-        execl("./textinterpreter", "test", "myarg1", "myarg2", "myarg3", (char *)NULL);
+        execl("textinterpreter", "test", "myarg1", "myarg2", "myarg3", (char *)NULL);
         return 0;
     }
     else{
@@ -43,5 +41,6 @@ int main() {
 
 
 // textintepreter (command: pwd , use that path in this file)
-// #! /home/cselab3/test/p3/echoall
+// #!/bin/bash
+// exec "/workspaces/MSRIT_6th_Sem_Notes/USP/final lab exam/echoall" "$@"
 
