@@ -41,5 +41,6 @@ int main() {
 
 
 // textintepreter (command: pwd , use that path in this file)
-// #! /home/cselab3/test/p3/echoall
+#!/bin/bash
+exec "/workspaces/MSRIT_6th_Sem_Notes/USP/final lab exam/echoall" "$@"
 
