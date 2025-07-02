@@ -6,26 +6,30 @@
 //  gcc p12_2_echoall_env.c -o echo_env
 // ./echo_env
 
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 
 int main() {
-    pid_t pid = fork();
+    char *env[] = {"USER=unknown", "PATH=/tmp", NULL};
+    if (fork() == 0)
+        execle("./echoall", "echoall", "myarg1", "MY ARG2", NULL, env);
+    wait(NULL);
+    execlp("./echoall", "echoall", "only 1 arg", NULL);
+    return 0;
+}
 
-    if (pid == 0) {
+//-------------------------------------------------------------
+// echoall.c
+#include <stdio.h>
+#include <stdlib.h>
 
-        char *envp[] = {"USER=custom_user", "HOME=/custom/home", "PATH=/custom/bin", NULL };
-
-        char *args[] = {"/usr/bin/env", NULL};
-        execle("/usr/bin/env", "env", NULL, envp);
-    }
-    else {
-        wait(NULL);
-        // executes only the default environment variables
-        execl("/usr/bin/env", "env", NULL);
-    }
-
+int main(int argc, char *argv[], char *envp[]) {
+    for (int i = 0; i < argc; i++)
+        printf("argv[%d]: %s\n", i, argv[i]);
+    for (int i = 0; envp[i]; i++)
+        printf("%s\n", envp[i]);
     return 0;
 }
